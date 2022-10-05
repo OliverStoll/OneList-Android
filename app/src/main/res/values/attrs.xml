@@ -1,0 +1,12 @@
+<resources>
+    <declare-styleable name="AppWidgetAttrs">
+        <attr name="appWidgetPadding" format="dimension" />
+        <attr name="appWidgetInnerRadius" format="dimension" />
+        <attr name="appWidgetRadius" format="dimension" />
+
+        <attr name="cardHeight" format="dimension"/>
+        <attr name="cardTitleMargin" format="dimension"/>
+        <attr name="cardHabitHeight" format="dimension"/>
+
+    </declare-styleable>
+</resources>
