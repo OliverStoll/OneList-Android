@@ -24,13 +24,13 @@ fun getDay(offset: Int): String {
     c.add(Calendar.DATE, offset)
 
     return when (c.get(Calendar.DAY_OF_WEEK)) {
-        1 -> "So"
-        2 -> "Mo"
-        3 -> "Di"
-        4 -> "Mi"
-        5 -> "Do"
-        6 -> "Fr"
-        7 -> "Sa"
+        1 -> "S"
+        2 -> "M"
+        3 -> "D"
+        4 -> "M"
+        5 -> "D"
+        6 -> "F"
+        7 -> "S"
         else -> "ERROR"
     }
 }

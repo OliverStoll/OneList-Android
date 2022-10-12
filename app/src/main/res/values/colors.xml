@@ -17,10 +17,11 @@
 
 
     <!-- habit colors -->
-    <color name="habit_done">#09AC20</color>
-    <color name="habit_skip">#317CFD</color>
-    <color name="habit_fail">#FD1818</color>
-    <color name="habit_none">#9F9F9F</color>
+    <color name="habit_done">#0BBA24</color>
+    <color name="habit_skip">#5C98FF</color>
+    <color name="habit_fail">#FF3A3A</color>
+    <color name="habit_none">#7D8188</color>
+    <color name="habit_open">#9F9F9F</color>
     <color name="habit_text">#80FFFFFF</color>
 
     <color name="widget_card">#E7EAEC</color>

@@ -33,20 +33,20 @@
         <LinearLayout
             android:id="@+id/habitcard_tagebuch"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="72dp"
             android:layout_marginBottom="7dp"
             android:background="@drawable/habit_card_background"
             android:orientation="vertical"
-            android:paddingTop="6dp"
             android:paddingLeft="2dp"
+            android:paddingTop="6dp"
             android:paddingRight="2dp"
-            app:cornerRadius="50dp">
+            app:cornerRadius="600dp">
 
             <TextView
                 android:id="@+id/card_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="13dp"
                 android:paddingLeft="5dp"
                 android:text="Tagebuch"
                 android:textColor="@color/widget_text"
@@ -54,7 +54,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:orientation="horizontal">
 
                 <Button
@@ -67,7 +67,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -81,7 +82,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -95,7 +97,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -109,7 +112,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -123,7 +127,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -137,7 +142,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -151,7 +157,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -161,7 +168,7 @@
         <LinearLayout
             android:id="@+id/habitcard_meditieren"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="72dp"
             android:layout_marginBottom="7dp"
             android:background="@drawable/habit_card_background"
             android:orientation="vertical"
@@ -174,7 +181,7 @@
                 android:id="@+id/card_text2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="13dp"
                 android:paddingLeft="5dp"
                 android:text="Meditieren"
                 android:textColor="@color/widget_text"
@@ -182,7 +189,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:orientation="horizontal">
 
                 <Button
@@ -195,7 +202,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -209,7 +217,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -223,7 +232,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -237,7 +247,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -251,7 +262,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -265,7 +277,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -279,7 +292,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -289,7 +303,7 @@
         <LinearLayout
             android:id="@+id/habitcard_arbeiten"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="72dp"
             android:layout_marginBottom="7dp"
             android:background="@drawable/habit_card_background"
             android:orientation="vertical"
@@ -302,7 +316,7 @@
                 android:id="@+id/card_text3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="13dp"
                 android:paddingLeft="5dp"
                 android:text="Arbeit"
                 android:textColor="@color/widget_text"
@@ -310,7 +324,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:orientation="horizontal">
 
                 <Button
@@ -323,7 +337,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -337,7 +352,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -351,7 +367,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -365,7 +382,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -379,7 +397,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -393,7 +412,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -407,7 +427,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -417,7 +438,7 @@
         <LinearLayout
             android:id="@+id/habitcard_training"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="72dp"
             android:layout_marginBottom="7dp"
             android:background="@drawable/habit_card_background"
             android:orientation="vertical"
@@ -430,7 +451,7 @@
                 android:id="@+id/card_text4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="13dp"
                 android:paddingLeft="5dp"
                 android:text="Training"
                 android:textColor="@color/widget_text"
@@ -438,7 +459,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:orientation="horizontal">
 
                 <Button
@@ -451,7 +472,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -465,7 +487,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -479,7 +502,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -493,7 +517,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -507,7 +532,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -521,7 +547,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -535,7 +562,8 @@
                     android:insetBottom="0dp"
                     android:padding="0dp"
                     android:textColor="@color/habit_text"
-                    android:textSize="6dp"
+                    android:clickable="false"
+                    android:textSize="7dp"
                     app:cornerRadius="0dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
