@@ -18,7 +18,7 @@ import com.google.firebase.ktx.Firebase
  * Implementation of App Widget functionality.
  */
 
-class NewAppWidget : AppWidgetProvider() {
+class HabitAppWidget : AppWidgetProvider() {
 
     override fun onUpdate(
         context: Context,
@@ -46,7 +46,7 @@ class NewAppWidget : AppWidgetProvider() {
     override fun onEnabled(context: Context) {
         //Firebase.database.setPersistenceEnabled(true)
         val widgetManager = AppWidgetManager.getInstance(context)
-        val widgetIds = widgetManager.getAppWidgetIds(ComponentName(context, NewAppWidget::class.java))
+        val widgetIds = widgetManager.getAppWidgetIds(ComponentName(context, HabitAppWidget::class.java))
         Log.i("MAINACTIVITY", "Enabled - Widget Ids: ${widgetIds}")
         // create the habit clicking option
         createOnClickListener(context, widgetManager, widgetIds)
@@ -59,39 +59,38 @@ class NewAppWidget : AppWidgetProvider() {
 
     override fun onReceive(context: Context, intent: Intent) {
 
-        fun toggleHabit(habit: String) {
-            val database = Firebase.database
-            Log.i("ONCLICK", "Clicked: ${habit}")
-            val ref = database.getReference("Habits/${habit}/${getDate(0)}")
-
-            ref.get().addOnSuccessListener {
-                Log.i("ONCLICK", "Old Value: ${it.value}")
-                when (it.value.toString()) {
-                    "NONE" -> ref.setValue("DONE").addOnSuccessListener { }//createFirebaseListeners(context) }
-                    "null" -> ref.setValue("DONE").addOnSuccessListener { }//createFirebaseListeners(context) }
-                    "DONE" -> ref.setValue("FAIL").addOnSuccessListener { }//createFirebaseListeners(context) }
-                    "FAIL" -> ref.setValue("SKIP").addOnSuccessListener { }//createFirebaseListeners(context) }
-                    "SKIP" -> ref.setValue("NONE").addOnSuccessListener { }//createFirebaseListeners(context) }
-                }
-                createFirebaseListeners(context)
-            }
-        }
-
         super.onReceive(context, intent)
-
         when (intent.action) {
-            "TAGEBUCH" -> toggleHabit("Tagebuch")
-            "MEDITIEREN" -> toggleHabit("Meditieren")
-            "ARBEITEN" -> toggleHabit("Arbeiten")
-            "TRAINING" -> toggleHabit("Training")
+            "TAGEBUCH" -> toggleHabit(context, "Tagebuch")
+            "MEDITIEREN" -> toggleHabit(context, "Meditieren")
+            "ARBEITEN" -> toggleHabit(context, "Arbeiten")
+            "TRAINING" -> toggleHabit(context, "Training")
         }
+    }
+}
+
+fun toggleHabit(context: Context, habit: String) {
+    val database = Firebase.database
+    Log.i("ONCLICK", "Clicked: ${habit}")
+    val ref = database.getReference("Habits/${habit}/${getDate(0)}")
+
+    ref.get().addOnSuccessListener {
+        Log.i("ONCLICK", "Old Value: ${it.value}")
+        when (it.value.toString()) {
+            "NONE" -> ref.setValue("DONE").addOnSuccessListener { }//createFirebaseListeners(context) }
+            "null" -> ref.setValue("DONE").addOnSuccessListener { }//createFirebaseListeners(context) }
+            "DONE" -> ref.setValue("FAIL").addOnSuccessListener { }//createFirebaseListeners(context) }
+            "FAIL" -> ref.setValue("SKIP").addOnSuccessListener { }//createFirebaseListeners(context) }
+            "SKIP" -> ref.setValue("NONE").addOnSuccessListener { }//createFirebaseListeners(context) }
+        }
+        createFirebaseListeners(context)
     }
 }
 
 fun createOnClickListener(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
 
     fun getPendingSelfIntent(_context: Context, action: String): PendingIntent? {
-        val intent = Intent(_context, NewAppWidget::class.java)
+        val intent = Intent(_context, HabitAppWidget::class.java)
         intent.action = action
         return PendingIntent.getBroadcast(_context, 0, intent, 0)
     }
@@ -120,7 +119,7 @@ fun createFirebaseListeners(context: Context) {
                     return
                 }
                 for (appWidgetId in widgetIds) {
-                    updateHabitAppWidget(context, widgetManager, appWidgetId, buttons=buttons,
+                    updateHabitWidget(context, widgetManager, appWidgetId, buttons=buttons,
                         habitsHashmap = snapshot.value as HashMap<String, String>
                     )
                 }
@@ -133,7 +132,7 @@ fun createFirebaseListeners(context: Context) {
 
     // get manager and widget ids from context
     val widgetManager = AppWidgetManager.getInstance(context)
-    val widgetIds = widgetManager.getAppWidgetIds(ComponentName(context, NewAppWidget::class.java))
+    val widgetIds = widgetManager.getAppWidgetIds(ComponentName(context, HabitAppWidget::class.java))
 
     // firebase
     Log.i("FIREBASE", "CREATE LISTENERS")
@@ -148,7 +147,7 @@ fun createFirebaseListeners(context: Context) {
     }
 }
 
-fun updateHabitAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int, buttons: List<Int>, habitsHashmap: HashMap<String, String>) {
+fun updateHabitWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int, buttons: List<Int>, habitsHashmap: HashMap<String, String>) {
 
     val views = RemoteViews(context.packageName, R.layout.app_widget)
 
