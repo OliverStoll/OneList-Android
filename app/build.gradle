@@ -60,7 +60,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-database-ktx'
+
     // gmail - android
+    /*
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
@@ -73,6 +75,7 @@ dependencies {
     // gmail - java
     implementation 'com.google.oauth-client:google-oauth-client-jetty:1.34.1'
     implementation 'com.google.apis:google-api-services-gmail:v1-rev20220404-2.0.0'
+     */
 }
 repositories {
     mavenCentral()
