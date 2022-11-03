@@ -1,5 +1,8 @@
 package com.example.habittracker
 
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.widget.RemoteViews
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -35,7 +38,9 @@ fun getDay(offset: Int): String {
     }
 }
 
-fun main() {
 
-
+fun createPendingIntent(context: Context, action: String): PendingIntent? {
+    val intent = Intent(context, HabitAppWidget::class.java)
+    intent.action = action
+    return PendingIntent.getBroadcast(context, 0, intent, 0)
 }
