@@ -13,12 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HabitTracker"
         tools:targetApi="31">
-        <activity
-            android:name=".Gmail_activity"
-            android:exported="false" />
-
         <receiver
-            android:name=".GmailAppWidget"
+            android:name=".TodoWidget"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -26,7 +22,7 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/gmail_app_widget_info" />
+                android:resource="@xml/todo_widget_info" />
         </receiver>
         <receiver
             android:name=".HabitAppWidget"
@@ -37,7 +33,7 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/new_app_widget_info" />
+                android:resource="@xml/habit_widget_info" />
         </receiver>
 
         <activity
@@ -51,6 +47,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".util.TodoWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>

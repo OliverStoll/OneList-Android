@@ -36,11 +36,31 @@ fun createHabitListener(context: Context, habit: String) {
     })
 }
 
+fun getHabitData(context: Context, habit: String) {
+
+    // get global references
+    val database = Firebase.database
+
+    // add the listener for the habit, sorted by date
+    val habitRef = database.getReference("Habits/${habit}").limitToLast(8)
+    habitRef.get().addOnSuccessListener { snapshot ->
+        Log.i("FIREBASE", "Received ${habit}: ${snapshot.value}")
+        if (snapshot.value != null) {
+            // typecast the snapshot to a hashmap of habit days
+            val habitsData = snapshot.value as HashMap<String, *>
+
+            // update the widget with the new data
+            updateHabitWidget(context, habit, habitsData)
+        }
+    }
+}
+
 fun createAllHabitListeners(context: Context) {
 
     // create the listeners
     Log.i("FIREBASE", "CREATE ALL HABIT LISTENERS")
     for (habitData in habitsDict){
+        getHabitData(context, habitData.key)
         createHabitListener(context, habitData.key)
     }
 }

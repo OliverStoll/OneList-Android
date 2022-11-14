@@ -47,10 +47,9 @@ class HabitAppWidget : AppWidgetProvider() {
     ) {
         createOnClickListeners(context)
         createAllHabitListeners(context)
-        createAllHabitListeners(context)
         for (widgetId in appWidgetIds) {
             val views = RemoteViews(context.packageName, R.layout.habit_widget)
-            appWidgetManager.updateAppWidget(widgetId, views)
+            appWidgetManager.partiallyUpdateAppWidget(widgetId, views)
         }
     }
 
@@ -105,7 +104,6 @@ fun handleHabitClick(context: Context, habit: String) {
         }
         ref.setValue(newStatus).addOnSuccessListener{ createHabitListener(context, habit) }
         createAllHabitListeners(context)
-        createAllHabitListeners(context)
     }
 }
 
@@ -125,7 +123,7 @@ fun createOnClickListeners(context: Context) {
         views.setOnClickPendingIntent(R.id.habitcard_meditieren, createPendingIntent(context, "Meditieren"))
         views.setOnClickPendingIntent(R.id.habitcard_arbeiten, createPendingIntent(context, "Arbeiten"))
         views.setOnClickPendingIntent(R.id.habitcard_training, createPendingIntent(context, "Training"))
-        widgetManager.updateAppWidget(widgetId, views)
+        widgetManager.partiallyUpdateAppWidget(widgetId, views)
         Log.i("ONCLICK ", "Set all onclick pending intents")
     }
 }
@@ -197,6 +195,7 @@ fun updateHabitWidget(context: Context, habit: String, habitsData: HashMap<Strin
 
     // update the widget with the new data
     for (widgetId in widgetIds) {
-        widgetManager.updateAppWidget(widgetId, views)
+        // partially update the widget
+        widgetManager.partiallyUpdateAppWidget(widgetId, views)
     }
 }
