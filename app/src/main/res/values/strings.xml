@@ -15,4 +15,6 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
+    <string name="todo_widget_description">This is a ToDo widget</string>
+    <string name="habit_widget_description">This is a Habit widget</string>
 </resources>
