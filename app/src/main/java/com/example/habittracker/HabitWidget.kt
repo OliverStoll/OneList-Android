@@ -158,7 +158,7 @@ fun getHabitButtonColor(defaultColor: Int,habitDay: HashMap<String, *>?) : Int {
 }
 
 
-fun updateHabitWidget(context: Context, habit: String, habitsData: HashMap<String, *>) {
+fun updateWidgetOneHabit(context: Context, habit: String, habitsData: HashMap<String, *>) {
 
     // get the button ids for the habit
     val buttons = habitsDict[habit]!!["buttons"] as List<Int>

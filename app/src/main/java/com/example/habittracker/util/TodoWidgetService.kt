@@ -2,12 +2,13 @@ package com.example.habittracker.util
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.example.habittracker.R
-import com.example.habittracker.data.Todo
+import com.example.habittracker.TodoWidget
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -15,16 +16,18 @@ import com.google.firebase.database.ValueEventListener
 
 class TodoWidgetService : RemoteViewsService() {
     override fun onGetViewFactory(intent: Intent): RemoteViewsFactory {
+        Log.i("TODO WIDGET", "Factory: onGetViewFactory")
         return TodoRemoteViewsFactory(this.applicationContext, intent)
     }
 }
 
 
-class TodoRemoteViewsFactory(val context: Context, val intent: Intent) :
+class TodoRemoteViewsFactory(private val context: Context, val intent: Intent) :
     RemoteViewsService.RemoteViewsFactory {
     private lateinit var todoList: MutableList<String>
 
-    fun initData() {
+    private fun createDataListener() {
+        Log.i("TODO WIDGET", "Factory: createDataListener")
         val myRef = FirebaseDatabase.getInstance().getReference("To-Do")
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -37,8 +40,7 @@ class TodoRemoteViewsFactory(val context: Context, val intent: Intent) :
                     val todoName = todo.key
                     todoList.add(todoName!!)
                 }
-                Log.i("TodoRemoteViewsFactory", "initData: $todoList")
-                onDataSetChanged()
+                Log.i("TODO WIDGET", "Factory: initData: $todoList")
             }
             override fun onCancelled(error: DatabaseError) {
                 // Failed to read value
@@ -46,19 +48,29 @@ class TodoRemoteViewsFactory(val context: Context, val intent: Intent) :
         })
     }
 
-
     override fun onCreate() {
+        if (::todoList.isInitialized) {
+            Log.i("TODO WIDGET", "Factory: onCreate: $todoList")
+        } else {
+            Log.i("TODO WIDGET", "Factory: onCreate: todoList not initialized")
+        }
         // get data from firebase
-        initData()
+        createDataListener()
     }
 
     override fun onDataSetChanged() {
-        Log.i("TodoRemoteViewsFactory", "onDataSetChanged: $todoList")
+        if (::todoList.isInitialized) {
+            Log.i("TODO WIDGET", "Factory: onDataSetChanged: $todoList")
+        } else {
+            Log.i("TODO WIDGET", "Factory: onDataSetChanged: todoList not initialized")
+        }
+        // get data from firebase
+        createDataListener()
     }
 
     override fun onDestroy() {
         // close data source
-        Log.i("WIDGET", "onDestroy (TODO)")
+        Log.i("TODO WIDGET", "Factory: onDestroy")
     }
 
     override fun getCount(): Int {
@@ -77,9 +89,22 @@ class TodoRemoteViewsFactory(val context: Context, val intent: Intent) :
     }
 
     override fun getViewAt(position: Int): RemoteViews {
-        val todoView = RemoteViews(context.packageName, R.layout.todo_list_item)
-        todoView.setTextViewText(R.id.todoTextView, todoList[position])
-        return todoView
+        // get a single item view and set the data
+        val remoteView = RemoteViews(context.packageName, R.layout.todo_list_item)
+        remoteView.setTextViewText(R.id.todoTextView, todoList[position])
+
+
+
+        val fillInIntentCheckbox = Intent()
+        fillInIntentCheckbox.putExtra("click-name", todoList[position])
+        fillInIntentCheckbox.putExtra("click-type", "check")
+        remoteView.setOnClickFillInIntent(R.id.todoCheckBox, fillInIntentCheckbox)
+        val fillInIntent = Intent()
+        fillInIntent.putExtra("click-name", todoList[position])
+        fillInIntent.putExtra("click-type", "edit")
+        remoteView.setOnClickFillInIntent(R.id.todo_item, fillInIntent)
+
+        return remoteView
     }
 
     override fun getLoadingView(): RemoteViews {
@@ -96,6 +121,6 @@ class TodoRemoteViewsFactory(val context: Context, val intent: Intent) :
     }
 
     override fun hasStableIds(): Boolean {
-        return false
+        return true
     }
 }

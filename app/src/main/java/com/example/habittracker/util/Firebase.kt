@@ -2,9 +2,8 @@ package com.example.habittracker.util
 
 import android.content.Context
 import android.util.Log
-import com.example.habittracker.data.HabitDay
 import com.example.habittracker.habitsDict
-import com.example.habittracker.updateHabitWidget
+import com.example.habittracker.updateWidgetOneHabit
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -28,7 +27,7 @@ fun createHabitListener(context: Context, habit: String) {
             val habitsData = snapshot.value as HashMap<String, *>
 
             // update the widget with the new data
-            updateHabitWidget(context, habit, habitsData)
+            updateWidgetOneHabit(context, habit, habitsData)
         }
         override fun onCancelled(error: DatabaseError) {
             Log.i("FIREBASE", "Cancelled $habit")
@@ -50,7 +49,7 @@ fun getHabitData(context: Context, habit: String) {
             val habitsData = snapshot.value as HashMap<String, *>
 
             // update the widget with the new data
-            updateHabitWidget(context, habit, habitsData)
+            updateWidgetOneHabit(context, habit, habitsData)
         }
     }
 }
