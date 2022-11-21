@@ -35,8 +35,14 @@ fun getDay(offset: Int): String {
 }
 
 
-fun createPendingIntent(context: Context, action: String): PendingIntent? {
-    val intent = Intent(context, HabitAppWidget::class.java)
+fun createPendingIntent(context: Context, action: String, widget: Class<*> = HabitAppWidget::class.java): PendingIntent? {
+    val intent = Intent(context, widget)
     intent.action = action
     return PendingIntent.getBroadcast(context, 0, intent, 0)
+}
+
+fun makeToast(context: Context, text: String) {
+    val duration = android.widget.Toast.LENGTH_SHORT
+    val toast = android.widget.Toast.makeText(context, text, duration)
+    toast.show()
 }

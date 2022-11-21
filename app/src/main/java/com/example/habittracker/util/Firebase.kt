@@ -63,3 +63,15 @@ fun createAllHabitListeners(context: Context) {
         createHabitListener(context, habitData.key)
     }
 }
+
+fun updateTodoItem(context: Context, ref: String, todoData: Any) {
+    // update the data
+    val todoRef = Firebase.database.getReference("To-Do/$ref")
+    todoRef.setValue(todoData)
+}
+
+fun deleteTodoItem(context: Context, ref: String) {
+    // delete the data
+    val todoRef = Firebase.database.getReference("To-Do/$ref")
+    todoRef.removeValue()
+}
