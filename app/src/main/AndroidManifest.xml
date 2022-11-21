@@ -14,7 +14,7 @@
         android:theme="@style/Theme.HabitTracker"
         tools:targetApi="31" >
         <activity
-            android:name=".TodoDetailView"
+            android:name=".TodoDetailActivity"
             android:theme="@style/Theme.Transparent"
             android:exported="false" />
 

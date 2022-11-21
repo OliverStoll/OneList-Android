@@ -2,13 +2,12 @@ package com.example.habittracker.util
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
 import com.example.habittracker.R
-import com.example.habittracker.TodoWidget
+import com.example.habittracker.makeToast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -24,7 +23,7 @@ class TodoWidgetService : RemoteViewsService() {
 
 class TodoRemoteViewsFactory(private val context: Context, val intent: Intent) :
     RemoteViewsService.RemoteViewsFactory {
-    private lateinit var todoList: MutableList<String>
+    private lateinit var todoList: MutableList<Map<String,String?>>
 
     private fun createDataListener() {
         Log.i("TODO WIDGET", "Factory: createDataListener")
@@ -37,8 +36,11 @@ class TodoRemoteViewsFactory(private val context: Context, val intent: Intent) :
                     todoList = mutableListOf()
                 }
                 for (todo in dataSnapshot.children) {
-                    val todoName = todo.key
-                    todoList.add(todoName!!)
+                    val todoId = todo.key as String
+                    val todoName = todo.child("name").value as String
+                    val todoStartDate = todo.child("start_datum").value as String?
+                    val todoData = mapOf("id" to todoId, "name" to todoName, "start_datum" to todoStartDate)
+                    todoList.add(todoData)
                 }
                 Log.i("TODO WIDGET", "Factory: initData: $todoList")
             }
@@ -91,16 +93,19 @@ class TodoRemoteViewsFactory(private val context: Context, val intent: Intent) :
     override fun getViewAt(position: Int): RemoteViews {
         // get a single item view and set the data
         val remoteView = RemoteViews(context.packageName, R.layout.todo_list_item)
-        remoteView.setTextViewText(R.id.todoTextView, todoList[position])
+        Log.i("LISTSERVICE", "getViewAt: $position with name ${todoList[position]["name"]}")
+        remoteView.setTextViewText(R.id.todoTextView, todoList[position]["name"])
 
 
 
         val fillInIntentCheckbox = Intent()
-        fillInIntentCheckbox.putExtra("click-name", todoList[position])
+        fillInIntentCheckbox.putExtra("todo-id", todoList[position]["id"])
+        fillInIntentCheckbox.putExtra("todo-name", todoList[position]["name"])
         fillInIntentCheckbox.putExtra("click-type", "check")
         remoteView.setOnClickFillInIntent(R.id.todoCheckBox, fillInIntentCheckbox)
         val fillInIntent = Intent()
-        fillInIntent.putExtra("click-name", todoList[position])
+        fillInIntent.putExtra("todo-id", todoList[position]["id"])
+        fillInIntent.putExtra("todo-name", todoList[position]["name"])
         fillInIntent.putExtra("click-type", "edit")
         remoteView.setOnClickFillInIntent(R.id.todo_item, fillInIntent)
 
