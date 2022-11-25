@@ -12,9 +12,6 @@ import com.example.habittracker.util.createAllHabitListeners
 import com.example.habittracker.util.createHabitListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import java.lang.Float.max
-import java.lang.Float.min
-import kotlin.math.max
 import kotlin.math.min
 
 
@@ -48,7 +45,7 @@ class HabitAppWidget : AppWidgetProvider() {
         createOnClickListeners(context)
         createAllHabitListeners(context)
         for (widgetId in appWidgetIds) {
-            val views = RemoteViews(context.packageName, R.layout.habit_widget)
+            val views = RemoteViews(context.packageName, R.layout.widget_habittracker)
             appWidgetManager.partiallyUpdateAppWidget(widgetId, views)
         }
     }
@@ -116,7 +113,7 @@ fun createOnClickListeners(context: Context) {
 
     for (widgetId in widgetIds) {
         // get the remote view of the widget
-        val views = RemoteViews(context.packageName, R.layout.habit_widget)
+        val views = RemoteViews(context.packageName, R.layout.widget_habittracker)
 
         // set the click listeners for the habit cards on the widget
         views.setOnClickPendingIntent(R.id.habitcard_tagebuch, createPendingIntent(context, "Tagebuch"))
@@ -168,7 +165,7 @@ fun updateWidgetOneHabit(context: Context, habit: String, habitsData: HashMap<St
     // get the global references
     val widgetManager = AppWidgetManager.getInstance(context)
     val widgetIds = widgetManager.getAppWidgetIds(ComponentName(context, HabitAppWidget::class.java))
-    val views = RemoteViews(context.packageName, R.layout.habit_widget)
+    val views = RemoteViews(context.packageName, R.layout.widget_habittracker)
 
     // iterate over all buttons
     val lastHabitIdx = (numberHabits - 1)

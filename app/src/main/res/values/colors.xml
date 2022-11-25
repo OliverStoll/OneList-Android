@@ -16,19 +16,18 @@
 
 
     <!-- habit colors -->
-    <color name="habit_done">#0BBA24</color>
+    <color name="habit_done">#56C166</color>
     <color name="habit_skip">#5C98FF</color>
     <color name="habit_fail">#FF3A3A</color>
     <color name="habit_none">#7D8188</color>
     <color name="habit_open">#9F9F9F</color>
     <color name="habit_text">#80FFFFFF</color>
 
-    <color name="widget_card">#E7EAEC</color>
-    <color name="widget_card_stroke">#ACABAB</color>
+    <!-- general widget colors -->
+    <color name="widget_accent">#397AFF</color>
     <color name="widget_background">#FAFAFA</color>
+    <color name="widget_card">#F0F3F4</color>
+    <color name="widget_card_stroke">#B3B2B2</color>
     <color name="widget_text">#2C2C2E</color>
-
-    <color name="widget_card_dark">#343537</color>
-    <color name="widget_background_dark">#474849</color>
 
 </resources>

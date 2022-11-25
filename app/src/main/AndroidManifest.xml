@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.habittracker" >
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!--Added for Accessing External Storage-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -27,7 +33,7 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/todo_widget_info" />
+                android:resource="@xml/widget_info_todolist" />
         </receiver>
         <receiver
             android:name=".HabitAppWidget"
@@ -38,7 +44,7 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/habit_widget_info" />
+                android:resource="@xml/widget_info_habittracker" />
         </receiver>
 
         <activity

@@ -2,6 +2,7 @@ package com.example.habittracker.util
 
 import android.content.Context
 import android.util.Log
+import com.example.habittracker.getDate
 import com.example.habittracker.habitsDict
 import com.example.habittracker.updateWidgetOneHabit
 import com.google.firebase.database.DataSnapshot
@@ -64,14 +65,24 @@ fun createAllHabitListeners(context: Context) {
     }
 }
 
-fun updateTodoItem(context: Context, ref: String, todoData: Any) {
-    // update the data
-    val todoRef = Firebase.database.getReference("To-Do/$ref")
+fun updateTodoItem(newTodoData: MutableMap<String, String?>) {
+    Log.i("FIREBASE", "UPDATE TODO ITEM")
+    val id = newTodoData["id"]!!
+    val todoRef = Firebase.database.getReference("To-Do/${id}")
+    todoRef.setValue(newTodoData)
+}
+
+fun snoozeTodoItem(todoData: MutableMap<String, String?>, snoozeDays: Int = 1) {
+    Log.i("FIREBASE", "SNOOZE TODO ITEM")
+    val id = todoData["id"]!!
+    val snoozeDate = getDate(snoozeDays)
+    todoData["start_datum"] = snoozeDate
+    val todoRef = Firebase.database.getReference("To-Do/${id}")
     todoRef.setValue(todoData)
 }
 
-fun deleteTodoItem(context: Context, ref: String) {
-    // delete the data
+fun deleteTodoItem(ref: String) {
+    Log.i("FIREBASE", "DELETE TODO ITEM")
     val todoRef = Firebase.database.getReference("To-Do/$ref")
     todoRef.removeValue()
 }
