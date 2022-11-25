@@ -5,17 +5,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="390dp"
     android:layout_height="800dp"
-    android:layout_columnWeight="1"
-    android:layout_rowWeight="1"
     android:layout_weight="1"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="top"
     android:background="#66666666"
     android:theme="@style/Theme.Transparent">
 
   <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="300dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="40dp"
+      android:paddingBottom="6dp"
       android:background="@color/white"
       android:orientation="vertical">
 
@@ -23,7 +23,7 @@
         android:id="@+id/widget_header2"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@color/green"
+        android:background="@color/widget_accent"
         android:fontFamily="sans-serif-medium"
         android:gravity="center_vertical"
         android:paddingStart="12dp"
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:autofillHints=""
         android:ems="10"
         android:inputType="text"
@@ -46,6 +46,7 @@
 
     <EditText
         android:id="@+id/todo_detail_start_date"
+        android:visibility="gone"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
@@ -54,11 +55,27 @@
         android:ems="10"
         android:inputType="date" />
 
+    <DatePicker
+        android:id="@+id/todo_detail_start_date_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:datePickerMode="calendar"
+        android:inputType="date"
+        android:scaleX="0.65"
+        android:scaleY="0.65"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="-50dp"
+        android:layout_marginTop="-80dp"
+        android:layout_marginBottom="-150dp"
+        />
+
     <Button
         android:id="@+id/todo_detail_button_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
+        android:layout_marginHorizontal="12dp"
         android:text="Speichern" />
   </LinearLayout>
 

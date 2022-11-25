@@ -3,11 +3,11 @@ package com.example.habittracker
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import java.util.Calendar
+import java.util.*
 
 
 
-fun getDate(offset: Int): String {
+fun getDate(offset: Int, delimiter: String = "_"): String {
     val c = Calendar.getInstance()
     c.add(Calendar.DATE, offset)
 
@@ -15,7 +15,7 @@ fun getDate(offset: Int): String {
     val month = (c.get(Calendar.MONTH)+1).toString().padStart(2, '0')
     val day = c.get(Calendar.DAY_OF_MONTH).toString().padStart(2, '0')
 
-    return year + "_" + month + "_" + day
+    return year + delimiter + month + delimiter + day
 }
 
 fun getDay(offset: Int): String {

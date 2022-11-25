@@ -11,13 +11,13 @@
     <TextView
         android:id="@+id/widget_header"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/green"
+        android:layout_height="@dimen/widget_header_height"
+        android:background="@color/widget_accent"
         android:fontFamily="sans-serif-medium"
         android:gravity="center_vertical"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:text="Habits"
+        android:text=""
         android:textColor="@color/widget_background"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -39,17 +39,18 @@
             android:paddingLeft="2dp"
             android:paddingTop="6dp"
             android:paddingRight="2dp"
+
             app:cornerRadius="600dp">
 
-            <TextView
-                android:id="@+id/card_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="13dp"
-                android:paddingLeft="5dp"
-                android:text="Tagebuch"
-                android:textColor="@color/widget_text"
-                android:textSize="16sp" />
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="@dimen/habit_widget_icon_size"
+                android:layout_height="@dimen/habit_widget_icon_size"
+                android:layout_marginBottom="@dimen/habit_widget_icon_margin_bottom"
+                android:layout_marginStart="@dimen/habit_widget_icon_margin"
+                android:layout_marginTop="@dimen/habit_widget_icon_margin"
+                android:src="@drawable/habit_diary"
+                tools:ignore="ContentDescription" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -162,6 +163,7 @@
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -178,6 +180,7 @@
 
             <TextView
                 android:id="@+id/card_text2"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="13dp"
@@ -185,6 +188,17 @@
                 android:text="Meditieren"
                 android:textColor="@color/widget_text"
                 android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:visibility="visible"
+                android:layout_width="@dimen/habit_widget_icon_size"
+                android:layout_height="@dimen/habit_widget_icon_size"
+                android:layout_marginBottom="@dimen/habit_widget_icon_margin_bottom"
+                android:layout_marginStart="@dimen/habit_widget_icon_margin"
+                android:layout_marginTop="@dimen/habit_widget_icon_margin"
+                android:src="@drawable/habit_meditate"
+                tools:ignore="ContentDescription" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -313,6 +327,7 @@
 
             <TextView
                 android:id="@+id/card_text3"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="13dp"
@@ -320,6 +335,16 @@
                 android:text="Arbeit"
                 android:textColor="@color/widget_text"
                 android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="@dimen/habit_widget_icon_size"
+                android:layout_height="@dimen/habit_widget_icon_size"
+                android:layout_marginBottom="@dimen/habit_widget_icon_margin_bottom"
+                android:layout_marginStart="@dimen/habit_widget_icon_margin"
+                android:layout_marginTop="@dimen/habit_widget_icon_margin"
+                android:src="@drawable/habit_work"
+                tools:ignore="ContentDescription" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -448,6 +473,7 @@
 
             <TextView
                 android:id="@+id/card_text4"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="13dp"
@@ -455,6 +481,16 @@
                 android:text="Training"
                 android:textColor="@color/widget_text"
                 android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="@dimen/habit_widget_icon_size"
+                android:layout_height="@dimen/habit_widget_icon_size"
+                android:layout_marginBottom="@dimen/habit_widget_icon_margin_bottom"
+                android:layout_marginStart="@dimen/habit_widget_icon_margin"
+                android:layout_marginTop="@dimen/habit_widget_icon_margin"
+                android:src="@drawable/habit_training"
+                tools:ignore="ContentDescription" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
