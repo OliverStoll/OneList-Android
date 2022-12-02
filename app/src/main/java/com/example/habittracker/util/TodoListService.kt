@@ -133,7 +133,9 @@ class TodoRemoteViewsFactory(private val context: Context, val intent: Intent) :
         remoteView.setOnClickFillInIntent(R.id.todoItem, fillInIntentEdit)
 
         // make the whole item invisible if there is no data
-        if (todoItem["start_datum"] != "" && todoItem["start_datum"]!! > getDate(0, delimiter = "-")) {
+        if (todoItem["start_datum"] == null) {
+            remoteView.setViewVisibility(R.id.todoItem, View.GONE)
+        } else if (todoItem["start_datum"] != "" && todoItem["start_datum"]!! > getDate(0, delimiter = "_")) {
             Log.i("TodoRemoteViewsFactory", "Position $position invisible")
             remoteView.setViewVisibility(R.id.todoItem, View.GONE)
         } else {

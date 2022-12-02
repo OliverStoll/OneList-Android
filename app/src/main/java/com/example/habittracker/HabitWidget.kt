@@ -172,7 +172,7 @@ fun updateWidgetOneHabit(context: Context, habit: String, habitsData: HashMap<St
     for (i in 0 .. lastHabitIdx) {
         val button = buttons.elementAt(i)
         val date = getDate(-(lastHabitIdx-i))  // get the days offset inverted
-        val day = getDay(-(lastHabitIdx-i))
+        val day = getWeekday(-(lastHabitIdx-i))
 
         // compare the date the button represents against existing dates
         val habitDay = habitsData[date]

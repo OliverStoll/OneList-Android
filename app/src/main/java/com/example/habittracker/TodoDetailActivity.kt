@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
@@ -26,7 +27,7 @@ class TodoDetailActivity : Activity() {
         var todoId = intent.getStringExtra("id")
         var todoName = intent.getStringExtra("name")
         var todoStartDate = intent.getStringExtra("start_datum")
-        Log.i("TODO DETAIL VIEW", "todoName: $todoName todoStartDate: $todoStartDate")
+        Log.i("TODO-DETAIL", "todoName: $todoName todoStartDate: $todoStartDate")
 
         // set the text of the edit text fields
         todoText.setText(todoName)
@@ -37,8 +38,6 @@ class TodoDetailActivity : Activity() {
             val startDate = todoStartDate.split("-")
             startDatePicker.updateDate(startDate[0].toInt(), startDate[1].toInt() - 1, startDate[2].toInt())
         }
-
-
 
         // create new to-do id if the to-do id is null
         if (todoId == null) {
@@ -71,5 +70,13 @@ class TodoDetailActivity : Activity() {
             // finish the activity
             finish()
         }
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Log.i("TODO-DETAIL", "onKeyDown: Finish activity")
+            finish()
+        }
+        return super.onKeyDown(keyCode, event)
     }
 }
