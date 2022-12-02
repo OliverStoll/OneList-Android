@@ -31,7 +31,6 @@ val JSON_FACTORY: JsonFactory = GsonFactory.getDefaultInstance()
 class GmailApi {
     fun getCredentials(HTTP_TRANSPORT: NetHttpTransport, context: Context): Credential {
         // Load client secrets.
-        // TODO: Make this work with its own class (context does not work here)
         val inputStream = GmailApi::class.java.getResourceAsStream(CREDENTIALS_FILE_PATH)
             ?: throw FileNotFoundException("Resource not found: $CREDENTIALS_FILE_PATH")
         val clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, InputStreamReader(inputStream))

@@ -14,6 +14,9 @@ import com.example.habittracker.util.deleteTodoItem
 import com.example.habittracker.util.snoozeTodoItem
 
 
+
+
+
 class TodoWidget : AppWidgetProvider() {
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
@@ -39,6 +42,13 @@ class TodoWidget : AppWidgetProvider() {
     override fun onReceive(context: Context, intent: Intent) {
         super.onReceive(context, intent)
 
+        if (intent.action == "TODO-CLICK" || intent.action == "TODO-ADD") {
+            Log.i("ONCLICK", "Clicked: ${intent.action}")
+        } else {
+            Log.i("onReceive", "Received other: ${intent.action}")
+            return
+        }
+
         val widgetManager = AppWidgetManager.getInstance(context)
         val widgetIds = widgetManager.getAppWidgetIds(ComponentName(context, TodoWidget::class.java))
 
@@ -49,17 +59,13 @@ class TodoWidget : AppWidgetProvider() {
             "start_datum" to intent.getStringExtra("todo-start_datum")
         )
 
-        if (intent.action == "TODO-CLICK" || intent.action == "TODO-ADD") {
-            Log.i("ONCLICK", "Clicked: $clickType $todoData")
-        }
-
         // handle all clicks
         if (intent.action == "TODO-CLICK" && clickType == "edit") {
             val editIntent = Intent(context, TodoDetailActivity::class.java)
+            editIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             for ((key, value) in todoData) {
                 editIntent.putExtra(key, value)
             }
-            editIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(editIntent)
         }
         else if (intent.action == "TODO-CLICK" && clickType == "check") {
@@ -69,7 +75,7 @@ class TodoWidget : AppWidgetProvider() {
             snoozeTodoItem(todoData=todoData)
         }
         else if (intent.action == "TODO-ADD") {
-            makeToast(context, "Clicked: ${intent.action}")
+            // start the TodoDetailActivity
             val addIntent = Intent(context, TodoDetailActivity::class.java)
             addIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(addIntent)

@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <!--Added for Accessing External Storage-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
@@ -19,33 +18,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HabitTracker"
         tools:targetApi="31" >
+
         <activity
             android:name=".TodoDetailActivity"
             android:theme="@style/Theme.Transparent"
-            android:exported="false" />
+            android:exported="true" />
 
-        <receiver
-            android:name=".TodoWidget"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/widget_info_todolist" />
-        </receiver>
-        <receiver
-            android:name=".HabitAppWidget"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/widget_info_habittracker" />
-        </receiver>
+        <activity
+            android:name=".DiaryActivity"
+            android:exported="true" />
 
         <activity
             android:name=".MainActivity"
@@ -62,6 +43,29 @@
         <service
             android:name=".util.TodoWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <receiver
+            android:name=".TodoWidget"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_todolist" />
+        </receiver>
+
+        <receiver
+            android:name=".HabitAppWidget"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_habittracker" />
+        </receiver>
+
     </application>
 
 </manifest>
