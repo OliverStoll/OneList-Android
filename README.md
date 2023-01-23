@@ -1,2 +1,2 @@
 # Productivity-Android
-Android productivity app centered around one homescreen widget displaying to-do's, calendar, unread mail and more
+Open source Android productivity app, build around a central homescreen widget acting as a taskmanager by displaying to-do's, calendar, unread mail and more
